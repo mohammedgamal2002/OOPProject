@@ -9,7 +9,7 @@ package oopproject;
  */
 public class OOPProject {
     public static void main(String[] args) {
-        RegisterScreen s = new RegisterScreen();
+        LoginScreen screen = new LoginScreen();
     }
 
 }

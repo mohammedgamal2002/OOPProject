@@ -1,25 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package oopproject;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.util.Scanner;
 
 /**
- *
  * @author PC
  */
 public class LoginScreen extends JFrame {
 
     static Scanner input = new Scanner(System.in);
     static public ArrayList<User> userList = new ArrayList<>();
-    private javax.swing.JButton LogIn_Button;
-    private javax.swing.JButton RegisterButton;
-    private javax.swing.JPasswordField PasswordField;
-    private javax.swing.JTextField UsernameField;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JButton registerButton;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField usernameField;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -31,26 +29,16 @@ public class LoginScreen extends JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
 
 
     public LoginScreen() {
         showLoginScreen();
     }
-
-    private boolean isValidUser(String username, String password) {
-        // Check credentials against the stored users
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getUser_name().equals(username) && userList.get(i).getPassword().equals(password)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    private void showLoginScreen() {
-        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+    
+    private void init() {
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -59,19 +47,18 @@ public class LoginScreen extends JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        UsernameField = new javax.swing.JTextField();
-        PasswordField = new javax.swing.JPasswordField();
-        LogIn_Button = new javax.swing.JButton();
-        RegisterButton = new javax.swing.JButton();
+        usernameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        javax.swing.JTextArea jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
+    }
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
-
+    private void setElementsProperties() {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 500));
         jPanel1.setLayout(null);
@@ -121,33 +108,33 @@ public class LoginScreen extends JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(300, 420, 160, 16);
 
-        RegisterButton.setBackground(new java.awt.Color(204, 204, 204));
-        RegisterButton.setForeground(new java.awt.Color(0, 0, 0));
-        RegisterButton.setText("Register");
+        registerButton.setBackground(new java.awt.Color(204, 204, 204));
+        registerButton.setForeground(new java.awt.Color(0, 0, 0));
+        registerButton.setText("Register");
 
-        jPanel1.add(RegisterButton);
-        RegisterButton.setBounds(460, 420, 120, 23);
+        jPanel1.add(registerButton);
+        registerButton.setBounds(460, 420, 120, 23);
 
-        UsernameField.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(UsernameField);
-        UsernameField.setBounds(500, 220, 250, 22);
+        usernameField.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(usernameField);
+        usernameField.setBounds(500, 220, 250, 22);
 
-        PasswordField.setBackground(new java.awt.Color(255, 255, 255));
-//        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.setBackground(new java.awt.Color(255, 255, 255));
+//        passwordField.addActionListener(new java.awt.event.ActionListener() {
 //            public void actionPerformed(java.awt.event.ActionEvent evt) {
 //                PasswordFieldActionPerformed(evt);
 //            }
 //        });
-        jPanel1.add(PasswordField);
-        PasswordField.setBounds(500, 260, 250, 22);
+        jPanel1.add(passwordField);
+        passwordField.setBounds(500, 260, 250, 22);
 
-        LogIn_Button.setBackground(new java.awt.Color(204, 204, 204));
-        LogIn_Button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LogIn_Button.setForeground(new java.awt.Color(0, 0, 0));
-        LogIn_Button.setText("Log In");
-        jPanel1.add(LogIn_Button);
+        loginButton.setBackground(new java.awt.Color(204, 204, 204));
+        loginButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(0, 0, 0));
+        loginButton.setText("Log In");
+        jPanel1.add(loginButton);
 
-        LogIn_Button.setBounds(580, 340, 90, 27);
+        loginButton.setBounds(580, 340, 90, 27);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -167,6 +154,14 @@ public class LoginScreen extends JFrame {
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(300, -10, 610, 520);
+    }
+
+    private void prepareFrame() {
+
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 500));
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,8 +176,58 @@ public class LoginScreen extends JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pack();            // 
+        pack();            //
 
         setVisible(true);
+
     }
+
+    private void showLoginScreen() {
+        init();
+        setElementsProperties();
+        addLoginListeners();
+        prepareFrame();
+    }
+
+    private void addLoginListeners() {
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                login();
+            }
+        });
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                register();
+            }
+        });
+    }
+
+    private void login(){
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        if(isValidUser(username, password)){
+            System.out.println(("أنت راجل تمام وعال العال"));
+        }
+        else{
+            System.out.println("انت كداب يلا");
+        }
+    }
+    private void register(){
+        this.setVisible(false);
+        RegisterScreen registerScreen = new RegisterScreen();
+    }
+
+    private boolean isValidUser(String username, String password) {
+        // Check credentials against the stored users
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getUser_name().equals(username) && userList.get(i).getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
 }

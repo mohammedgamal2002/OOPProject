@@ -31,6 +31,9 @@ public class RegisterScreen extends JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPasswordField PasswordField;
     public RegisterScreen(){
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 500));
+
         initUI();
         addLabels();
         addFields();
@@ -44,7 +47,10 @@ public class RegisterScreen extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         registerScreen.setBackground(new java.awt.Color(255, 255, 255));
         registerScreen.setLayout(null);
-        registerScreen.setBounds(0,0,500,500);
+        registerScreen.setSize(400,400);
+        registerScreen.validate();
+        //registerScreen.setBounds(0,0,500,500);
+
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -254,7 +260,6 @@ public class RegisterScreen extends JFrame {
                         .addComponent(registerScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        this.pack();
         this.setVisible(true);
 
     }
